@@ -1,0 +1,17 @@
+{
+    "listeners": {
+        "*:5000"{
+            "pass": "application/flask"
+        }
+    },
+
+    "applications": {
+        "flask": {
+            "type": "python",
+ 	        "path": "/www/",
+	        "module": "app"
+        },
+
+        "skynet": {}
+    }
+}
