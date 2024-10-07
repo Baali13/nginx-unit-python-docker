@@ -1,6 +1,6 @@
 {
     "listeners": {
-        "*:5000"{
+        "*:5000": {
             "pass": "application/flask"
         }
     },
@@ -8,10 +8,8 @@
     "applications": {
         "flask": {
             "type": "python",
- 	        "path": "/www/",
+ 	        "path": "/var/www/python/skynet_bot",
 	        "module": "app"
-        },
-
-        "skynet": {}
+        }
     }
 }

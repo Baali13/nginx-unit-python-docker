@@ -6,8 +6,7 @@ services:
         volumes:
             - ${PROJECT_PATH}:/var/www
         ports:
-            - 80:80
-            - 3000:3000
+            - 5000:5000
         depends_on:
             - postgres
             - redis
