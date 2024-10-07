@@ -112,9 +112,11 @@ RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # 
 # Yarn install
 RUN npm install -g yarn
 
-COPY config.json /var/run/control.unit.sock
-RUN curl -X PUT --data-binary @config.json --unix-socket /var/run/control.unit.sock http://localhost/config
-
 # Change default work directory
 WORKDIR /var/www
 CMD ["unitd", "--no-daemon", "--control", "unix:/var/run/control.unit.sock"]
+RUN service unitd restart
+COPY config.json /var/run/control.unit.sock
+RUN chmod 777 /var/run/control.unit.sock/config.json
+RUN curl -X PUT --data-binary @config.json --unix-socket /var/run/control.unit.sock http://127.0.0.1/config
+RUN service unitd restart
